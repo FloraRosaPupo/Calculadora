@@ -1,3 +1,4 @@
+import 'package:calculadora/calculos.dart';
 import 'package:flutter/material.dart';
 
 class Calculadora extends StatefulWidget {
@@ -8,6 +9,8 @@ class Calculadora extends StatefulWidget {
 }
 
 class _CalculadoraState extends State<Calculadora> {
+  final _memory = Memory(); //inicializo a classe
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +36,7 @@ class _CalculadoraState extends State<Calculadora> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'Número',
+                          _memory.result,
                           style: TextStyle(fontSize: 80, color: Colors.white),
                         ),
                       ],
@@ -92,24 +95,29 @@ class _CalculadoraState extends State<Calculadora> {
       ),
     );
   }
-}
 
-botao(value, color) {
-  return Expanded(
-    child: Padding(
-      padding:
-          const EdgeInsets.all(8.0), // Adiciona espaçamento em todos os lados
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.transparent, // Cor de fundo
-        ),
-        onPressed: () {},
-        child: Text(
-          value,
-          style: TextStyle(
-              color: color, fontSize: 40, fontWeight: FontWeight.w400),
+  //preciso do contexyo
+  Widget botao(value, color) {
+    return Expanded(
+      child: Padding(
+        padding:
+            const EdgeInsets.all(8.0), // Adiciona espaçamento em todos os lados
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.transparent, // Cor de fundo
+          ),
+          onPressed: () {
+            setState(() {
+              _memory.applyCommand(value);
+            });
+          },
+          child: Text(
+            value,
+            style: TextStyle(
+                color: color, fontSize: 40, fontWeight: FontWeight.w400),
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
