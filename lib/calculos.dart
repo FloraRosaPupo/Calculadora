@@ -52,23 +52,29 @@ class Memory {
 
   // Método para adicionar um dígito ao resultado
   void _addDigit(String digit) {
-    if (_usedOperation) result = '0'; // Reinicia o resultado se uma operação foi utilizada
+    if (_usedOperation)
+      result = '0'; // Reinicia o resultado se uma operação foi utilizada
 
-    if (result.contains('.') && digit == '.') digit = ''; // Evita múltiplos pontos decimais
-    if (result == '0' && digit != '.') result = ''; // Remove o zero à esquerda se não for uma adição de ponto decimal
+    if (result.contains('.') && digit == '.')
+      digit = ''; // Evita múltiplos pontos decimais
+    if (result == '0' && digit != '.')
+      result =
+          ''; // Remove o zero à esquerda se não for uma adição de ponto decimal
 
     result += digit; // Adiciona o dígito ao resultado
 
     double? parsedValue = double.tryParse(result);
     if (parsedValue != null) {
-      _buffer[_bufferIndex] = parsedValue; // Atualiza o buffer com o valor convertido
+      _buffer[_bufferIndex] =
+          parsedValue; // Atualiza o buffer com o valor convertido
     }
     _usedOperation = false;
   }
 
   // Método para definir a operação atual
   void _setOperation(String operation) {
-    if (_usedOperation && operation == _operation) return; // Retorna se a operação já foi utilizada
+    if (_usedOperation && operation == _operation)
+      return; // Retorna se a operação já foi utilizada
 
     if (_bufferIndex == 0) {
       _bufferIndex = 1;
@@ -76,10 +82,13 @@ class Memory {
       _buffer[0] = _calculate(); // Calcula o resultado
     }
 
-    if (operation != '=') _operation = operation; // Define a operação atual, exceto se for "="
+    if (operation != '=')
+      _operation = operation; // Define a operação atual, exceto se for "="
 
     result = _buffer[0].toString();
-    result = result.endsWith('.0') ? result.split('.')[0] : result; // Remove o ".0" se for um número inteiro
+    result = result.endsWith('.0')
+        ? result.split('.')[0]
+        : result; // Remove o ".0" se for um número inteiro
 
     _usedOperation = true; // Indica que uma operação foi utilizada
   }
@@ -88,7 +97,7 @@ class Memory {
   double _calculate() {
     switch (_operation) {
       case '%':
-        return _buffer[0] % _buffer[1]; // Resto da divisão
+        return (_buffer[0] / _buffer[1]) * 100; // Calcula a porcentagem
       case '÷':
         return _buffer[0] / _buffer[1]; // Divisão
       case 'x':
