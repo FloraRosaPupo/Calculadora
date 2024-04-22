@@ -97,7 +97,7 @@ class Memory {
   double _calculate() {
     switch (_operation) {
       case '%':
-        return (_buffer[0] / _buffer[1]) * 100; // Calcula a porcentagem
+        return (_buffer[0] / 100); // Calcula a porcentagem
       case '÷':
         return _buffer[0] / _buffer[1]; // Divisão
       case 'x':
