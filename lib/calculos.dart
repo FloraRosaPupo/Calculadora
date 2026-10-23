@@ -48,6 +48,7 @@ class Memory {
   // Método para remover o último dígito do resultado
   void deleteEndDigit() {
     result = result.length > 1 ? result.substring(0, result.length - 1) : '0';
+    _buffer[_bufferIndex] = double.tryParse(result) ?? 0.0;
   }
 
   // Método para adicionar um dígito ao resultado

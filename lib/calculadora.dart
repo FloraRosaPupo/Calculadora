@@ -104,7 +104,7 @@ class _CalculadoraState extends State<Calculadora> {
             const EdgeInsets.all(8.0), // Adiciona espaçamento em todos os lados
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.transparent, // Cor de fundo
+            backgroundColor: Colors.transparent, // Cor de fundo
           ),
           onPressed: () {
             setState(() {
