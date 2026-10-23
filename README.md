@@ -3,7 +3,9 @@
 Calculadora com operações aritméticas, resto, limpeza e exclusão de dígitos.
 
 ## Stack e organização
-Flutter/Dart, Dart e Material. A lógica está em `lib/calculos.dart` e a interface em `lib/calculadora.dart`. O botão `%` representa resto da divisão.
+Flutter/Dart e regras Dart.
+
+Tela, cálculos e inicialização já têm arquivos próprios. A revisão mantém essa separação de uma única funcionalidade e corrige a sincronização do buffer ao apagar; não introduz framework ou camadas vazias.
 
 ## Executar
 Use a versão de Flutter registrada em `.github/workflows/ci.yml`.
@@ -26,3 +28,17 @@ Abra uma branch por alteração, descreva o comportamento esperado e inclua test
 
 ## Licença
 Não há licença de distribuição definida neste repositório.
+
+
+## Funcionalidades
+
+- Operações aritméticas.
+- entrada decimal.
+- remoção de dígitos.
+
+
+## Organização e manutenção
+
+Tela, cálculos e inicialização já têm arquivos próprios. A revisão mantém essa separação de uma única funcionalidade e corrige a sincronização do buffer ao apagar; não introduz framework ou camadas vazias.
+
+Veja [a revisão de desenvolvimento](docs/REVISAO.md) para decisões, testes e limites, e [o guia de contribuição](CONTRIBUTING.md) para o fluxo de manutenção.
